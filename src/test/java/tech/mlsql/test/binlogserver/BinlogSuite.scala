@@ -13,7 +13,7 @@ import org.apache.spark.sql.streaming.util.StreamManualClock
 import org.apache.spark.sql.types.{StringType, StructField, StructType}
 import org.apache.spark.sql.{DataSetHelper, SaveMode}
 import org.scalatest.time.SpanSugar._
-import tech.mlsql.common.utils.ScalaReflect
+import tech.mlsql.common.utils.lang.sc.ScalaReflect
 
 /**
   * 2019-06-15 WilliamZhu(allwefantasy@gmail.com)
@@ -239,5 +239,10 @@ class BinlogSuite extends BaseBinlogTest with BinLogSocketServerSerDer {
 
 
     }
+  }
+
+  test("test") {
+    println(Map("binaryLogClient.setWow" -> "100").filter(f => f._1.startsWith("binaryLogClient.")).
+      map(f => (f._1.substring("binaryLogClient.".length), f._2)).toMap)
   }
 }

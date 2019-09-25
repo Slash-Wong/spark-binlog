@@ -1,6 +1,6 @@
 package org.apache.spark.sql.mlsql.sources.mysql.binlog
 
-import tech.mlsql.common.utils.JsonUtils
+import tech.mlsql.common.utils.serder.json.JsonUtils
 
 
 object BinlogOffset {
@@ -33,7 +33,8 @@ case class MySQLConnectionInfo(host: String, port: Int, userName: String, passwo
                                binlogFileName: Option[String],
                                recordPos: Option[Long],
                                databaseNamePattern: Option[String] = None,
-                               tableNamePattern: Option[String] = None
+                               tableNamePattern: Option[String] = None,
+                               properties: Option[Map[String, String]] = None
                               )
 
 case class TableInfoCacheKey(databaseName: String, tableName: String, tableId: Long)
